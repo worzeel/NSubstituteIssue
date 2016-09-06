@@ -62,12 +62,39 @@ namespace Issue.Test
         {
             var sut = SUT();
 
-            Arg.Any<string>();
-
             sut.MyTestMethod();
 
-            // this fails for some reason with "No Received"... only difference is the call to Arg.Any...
-            this.issueInterface.Received().SomeMethodWithParam("test");
+            this.issueInterface.Received().SomeMethodWithParam(Arg.Any<string>());
+        }
+
+        [Test]
+        public void TestMyTestMethodWithParam1()
+        {
+            var sut = SUT();
+
+            sut.MyTestMethodWithParam(Arg.Any<string>());
+
+            this.issueInterface.Received().SomeMethod();
+        }
+
+        [Test]
+        public void TestMyTestMethodWithParam2()
+        {
+            var sut = SUT();
+
+            sut.MyTestMethodWithParam(string.Empty);
+
+            this.issueInterface.Received().SomeMethodWithParam(Arg.Any<string>());
+        }
+
+        [Test]
+        public void TestMyTestMethodWithParam3()
+        {
+            var sut = SUT();
+
+            sut.MyTestMethodWithParam(Arg.Any<string>());
+
+            this.issueInterface.Received().SomeMethodWithParam(Arg.Any<string>());
         }
     }
 }

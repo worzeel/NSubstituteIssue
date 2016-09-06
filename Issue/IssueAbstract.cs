@@ -20,5 +20,11 @@ namespace Issue
             this.issueInterface.SomeMethod();
             this.issueInterface.SomeMethodWithParam("test");
         }
+
+        public void MyTestMethodWithParam(string param)
+        {
+            this.issueInterface.SomeMethod();
+            this.issueInterface.SomeMethodWithParam("test");
+        }
     }
 }
